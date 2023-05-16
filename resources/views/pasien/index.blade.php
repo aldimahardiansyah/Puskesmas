@@ -37,15 +37,15 @@
                 @php $iteration = 1 @endphp
                 @foreach ($pasiens as $item)
                     <tr>
-                        <td>{{ $iteration++ }}</td>
-                        <td>{{ $item['nama'] }}</td>
-                        <td>{{ $item['jk'] }}</td>
-                        <td>{{ $item['tgl_lahir'] }}</td>
-                        <td>{{ $item['alamat'] }}</td>
-                        <td>{{ $item['telp'] }}</td>
+                        <td>1</td>
+                        <td>Aldi</td>
+                        <td>Laki-Laki</td>
+                        <td>07/08/2002</td>
+                        <td>Leuwiliang, Bogor</td>
+                        <td>08123456789</td>
                         <td>
-                            <a href="{{ url('pasien/' . $item['id'] . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ url('pasien/' . $item['id']) }}" method="POST" class="d-inline">
+                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="#" method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>

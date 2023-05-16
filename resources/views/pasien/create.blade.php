@@ -31,30 +31,30 @@
                     <div class="form-group mt-3">
                         @csrf
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Pasien" value="{{ old('nama') }}">
+                        <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Pasien" value="">
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="jk">Jenis Kelamin</label>
                         <select class="form-control" name="jk">
-                            <option value="L" {{ old('jk') == 'L' ? 'selected' : '' }}>Laki-laki</option>
-                            <option value="P" {{ old('jk') == 'P' ? 'selected' : '' }}>Perempuan</option>
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
                         </select>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                        <input type="date" class="form-control" name="tgl_lahir" value="">
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="alamat">Alamat</label>
-                        <textarea class="form-control" name="alamat">{{ old('alamat') }}</textarea>
+                        <textarea class="form-control" name="alamat"></textarea>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="telp">No. Telp</label>
-                        <input type="text" class="form-control" name="telp" placeholder="Masukkan No. Telp" value="{{ old('telp') }}">
+                        <input type="text" class="form-control" name="telp" placeholder="Masukkan No. Telp" value="">
                     </div>
 
                     <div class="form-group mt-3 d-flex justify-content-center">
