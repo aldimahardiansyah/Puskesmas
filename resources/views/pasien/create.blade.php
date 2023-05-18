@@ -28,6 +28,7 @@
                 @endif
 
                 <form action="/pasien" method="post" class="mx-2">
+                    @csrf
                     <div class="form-group mt-3">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Pasien" value="">
