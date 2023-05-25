@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Route untuk menampilkan daftar pasien
 Route::get('/pasien', [PasienController::class, 'index']);
 
@@ -26,3 +23,6 @@ Route::get('/pasien/create', [PasienController::class, 'create']);
 
 // Route untuk memproses form tambah pasien
 Route::post('/pasien', [PasienController::class, 'store']);
+
+// Route untuk menampilkan halaman dashboard
+Route::get('/', [DashboardController::class, 'index']);
