@@ -1,12 +1,8 @@
 Tugas:
 
-* Buat Route Untuk:
-  * menampilkan daftar dokter
-  * menampilkan form tambah dokter
-  * memproses form dokter
-* Buat Views dan Model Dokter lalu isi data dokter dalam method getAll()
-  * nama
-  * spesialis
-  * telp
-  * alamat
-* Buat Controller Dokter dan hubungkan dengan model dan viewsnya
+* Buat migration dokters
+* Sambungkan Model Dokter dengan tabel dokters
+* Buat method store supaya dapat insert data ke model dokter menggunakan eloquent create()
+* Tampilkan seluruh data di tabel dokter di halaman daftar dokter
+
+Note: Jangan lupa dibuat fillable untuk mendeklarasikan field apa saja yang boleh diisi.
