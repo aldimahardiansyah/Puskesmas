@@ -9,12 +9,9 @@ class Pasien extends Model
 {
     use HasFactory;
 
-    public static function getAll()
-    {
-        return [
-            ['nama' => 'Udin', 'jk' => 'l', 'tgl_lahir' => '12/06/2002', 'alamat' => 'Bogor', 'telp' => '08123456789'],
-            ['nama' => 'Siti', 'jk' => 'p', 'tgl_lahir' => '10/07/2003', 'alamat' => 'Depok', 'telp' => '08123456789'],
-            ['nama' => 'Ali', 'jk' => 'l', 'tgl_lahir' => '12/09/2001', 'alamat' => 'Jakarta', 'telp' => '08123456789'],
-        ];
-    }
+    // hubungkan model ke table pasiens
+    protected $table = 'pasiens';
+
+    // menyebutkan field pada tabel yang boleh diisi.
+    protected $fillable = ['nama', 'jk', 'tgl_lahir', 'alamat', 'telp'];
 }
