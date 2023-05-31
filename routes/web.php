@@ -24,5 +24,8 @@ Route::get('/pasien/create', [PasienController::class, 'create']);
 // Route untuk memproses form tambah pasien
 Route::post('/pasien', [PasienController::class, 'store']);
 
+// Route untuk menghapus data pasien
+Route::delete('/pasien', [PasienController::class, 'destroy']);
+
 // Route untuk menampilkan halaman dashboard
 Route::get('/', [DashboardController::class, 'index']);
