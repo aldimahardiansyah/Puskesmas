@@ -22,8 +22,18 @@ class PasienController extends Controller
         return view('admin.pasien.create');
     }
 
+    // untuk menangani submit form tambah pasien
     public function store(Request $request)
     {
+        // Melakukan validasi data form
+        $request->validate([
+            'nama' => 'required | min:3',
+            'jk' => 'required',
+            'tgl_lahir' => 'required | date',
+            'alamat' => 'required | max:500',
+            'telp' => 'required | numeric | digits_between:10,14',
+        ]);
+
         // Insert data ke table pasiens
         Pasien::create([
             // field di table => nilai yang ingin diisi
@@ -35,5 +45,47 @@ class PasienController extends Controller
         ]);
 
         return redirect('/pasien');
+    }
+
+    public function edit($id)
+    {
+        // mendapatkan pasien berdasarkan id
+        $pasien = Pasien::find($id);
+
+        return view('admin.pasien.edit', [
+            'pasien' => $pasien
+        ]);
+    }
+
+    // method untuk update pasien
+    public function update($id, Request $request)
+    {
+        // Melakukan validasi data form
+        $validatedData = $request->validate([
+            'nama' => 'required | min:3',
+            'jk' => 'required',
+            'tgl_lahir' => 'required | date',
+            'alamat' => 'required | max:500',
+            'telp' => 'required | numeric | digits_between:10,14',
+        ]);
+
+        // cari pasien yang akan di update
+        $pasien = Pasien::find($id);
+
+        // Update pasien berdasarkan data validasi
+        $pasien->update($validatedData);
+
+        // kembalikan ke halaman daftar pasien
+        return redirect('/pasien')->with('success', 'Data pasien berhasil diubah.');
+    }
+
+    // method untuk hapus pasien
+    public function destroy(Request $request)
+    {
+        // hapus pasien berdasarkan id
+        Pasien::destroy($request->id);
+
+        // kembalikan ke halaman daftar pasien
+        return redirect('/pasien')->with('success', 'Data pasien berhasil dihapus.');
     }
 }
