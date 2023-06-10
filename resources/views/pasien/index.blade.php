@@ -45,7 +45,7 @@
                             <form action="/pasien" method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')
-                                <input type="hidden" value="{{ $item->id }}" name="id">
+                                <input type="hidden" name="id" value="{{ $item->id }}">
                                 <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
                             </form>
                         </td>

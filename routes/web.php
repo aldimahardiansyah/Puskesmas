@@ -29,8 +29,8 @@ Route::post('/pasien', [PasienController::class, 'store']);
 // Route untuk menampilkan form edit pasien
 Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
 
-// Route untuk memproses edit pasien
+// Route untuk memproses update pasien
 Route::put('/pasien/{id}', [PasienController::class, 'update']);
 
-// Route untuk menghapus pasien
+// Route untuk menghapus data pasien
 Route::delete('/pasien', [PasienController::class, 'destroy']);

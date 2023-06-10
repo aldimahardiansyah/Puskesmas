@@ -44,16 +44,18 @@ class PasienController extends Controller
         return redirect('/pasien');
     }
 
+    // method untuk menampilkan form edit pasien
     public function edit($id)
     {
         // cari pasien berdasarkan id
         $pasien = Pasien::find($id);
 
         return view('pasien.edit', [
-            'pasien' => $pasien,
+            'pasien' => $pasien
         ]);
     }
 
+    // method untuk mengupdate data pasien
     public function update($id, Request $request)
     {
         // validasi data
@@ -68,7 +70,7 @@ class PasienController extends Controller
         // cari pasien berdasarkan id
         $pasien = Pasien::find($id);
 
-        // simpan perubahan
+        // simpan data perubahan
         $pasien->update([
             'nama' => $request->nama,
             'jk' => $request->jk,
@@ -77,18 +79,17 @@ class PasienController extends Controller
             'telp' => $request->telp,
         ]);
 
+        // kembalikan ke halaman daftar pasien
         return redirect('/pasien')->with('success', 'Data pasien berhasil diubah.');
     }
 
-    // method untuk menghapus
+    // method untuk menghapus data pasien
     public function destroy(Request $request)
     {
-        $deleted = Pasien::destroy($request->id);
+        // hapus data
+        Pasien::destroy($request->id);
 
-        if ($deleted) {
-            return redirect('/pasien')->with('success', 'Data pasien berhasil dihapus.');
-        }
-
-        return redirect('/pasien')->with('success', 'Data pasien gagal dihapus.');
+        // kembalikan ke halaman daftar pasien
+        return redirect('/pasien')->with('success', 'Data pasien berhasil dihapus.');
     }
 }
