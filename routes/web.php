@@ -16,25 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route untuk menampilkan daftar pasien
-Route::get('/pasien', [PasienController::class, 'index'])->middleware('auth');
+// Group untuk user yang sudah terautentikasi dan rolenya admin
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    // Route untuk menampilkan form tambah pasien
+    Route::get('/pasien/create', [PasienController::class, 'create']);
 
-// Route untuk menampilkan form tambah pasien
-Route::get('/pasien/create', [PasienController::class, 'create'])->middleware('auth');
+    // Route untuk memproses form tambah pasien
+    Route::post('/pasien', [PasienController::class, 'store']);
 
-// Route untuk memproses form tambah pasien
-Route::post('/pasien', [PasienController::class, 'store'])->middleware('auth');
+    // Route untuk menghapus data pasien
+    Route::delete('/pasien', [PasienController::class, 'destroy']);
 
-// Route untuk menghapus data pasien
-Route::delete('/pasien', [PasienController::class, 'destroy'])->middleware('auth');
+    // Route untuk menampilkan form edit pasien
+    Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
 
-// Route untuk menampilkan halaman dashboard
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+    // Route untuk memproses form edit pasien
+    Route::put('/pasien/{id}', [PasienController::class, 'update']);
+});
 
-// Route untuk menampilkan form edit pasien
-Route::get('/pasien/edit/{id}', [PasienController::class, 'edit'])->middleware('auth');
+// Group untuk user yang sudah terautentikasi
+Route::group(['middleware' => ['auth']], function () {
+    // Route untuk menampilkan daftar pasien
+    Route::get('/pasien', [PasienController::class, 'index']);
 
-// Route untuk memproses form edit pasien
-Route::put('/pasien/{id}', [PasienController::class, 'update'])->middleware('auth');
+    // Route untuk menampilkan halaman dashboard
+    Route::get('/', [DashboardController::class, 'index']);
+});
 
 Auth::routes();
